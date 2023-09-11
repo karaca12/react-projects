@@ -44,6 +44,7 @@ const CourseAdd = () => {
       setLecture({
         LectureName: "",
         LectureDescription: "",
+        LectureLecturerName: user.userName,
       });
     } catch (error) {
       console.error("Error adding the course:", error);

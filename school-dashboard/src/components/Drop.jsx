@@ -36,7 +36,7 @@ function Drop() {
 
   useEffect(() => {
     fetchUserLectures();
-  });
+  }, []);
 
   const dropLecture = async (lectureName) => {
     setSelectedCourse(lectureName);

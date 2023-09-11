@@ -36,7 +36,7 @@ function Enrollment() {
 
   useEffect(() => {
     fetchEnrollmentLectures();
-  });
+  }, []);
 
   const enrollToLecture = async (lectureName) => {
     setSelectedCourse(lectureName);

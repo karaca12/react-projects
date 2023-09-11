@@ -45,7 +45,7 @@ function Students() {
 
   useEffect(() => {
     fetchUserLectures();
-  });
+  }, []);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);

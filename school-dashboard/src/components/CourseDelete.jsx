@@ -36,7 +36,7 @@ function CourseDelete() {
 
   useEffect(() => {
     fetchUserLectures();
-  });
+  }, []);
 
   const deleteLecture = async (lectureName) => {
     setSelectedCourse(lectureName);
