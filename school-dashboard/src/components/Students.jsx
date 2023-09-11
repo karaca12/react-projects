@@ -73,76 +73,80 @@ function Students() {
       <Typography variant="h2" textAlign="center">
         Students
       </Typography>
-      {courses.map((course) => (
-        <Accordion
-          sx={{
-            mt: "1rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "80%",
-          }}
-          key={course.lectureName}
-          expanded={expanded === course.lectureName}
-          onChange={handleChange(course.lectureName)}
-        >
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6">
-              {course.lectureName} - {course.lectureLecturerName}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails
-            style={{
-              flex: "1",
+      {courses.length !== 0 ? (
+        courses.map((course) => (
+          <Accordion
+            sx={{
+              mt: "1rem",
               display: "flex",
               flexDirection: "column",
-              gap: "1rem",
+              alignItems: "center",
+              width: "80%",
             }}
+            key={course.lectureName}
+            expanded={expanded === course.lectureName}
+            onChange={handleChange(course.lectureName)}
           >
-            <div
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="h6">
+                {course.lectureName} - {course.lectureLecturerName}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails
               style={{
+                flex: "1",
                 display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginBottom: "0.5rem",
+                flexDirection: "column",
+                gap: "1rem",
               }}
             >
-              <div style={{ flex: 2, marginRight: "5rem" }}>
-                {" "}
-                <Typography variant="body2">Student Name</Typography>
-              </div>
-              <div style={{ flex: 2, marginRight: "5rem" }}>
-                {" "}
-                <Typography variant="body2">School Number</Typography>
-              </div>
-              <div style={{ flex: 2 }}>
-                <Typography variant="body2">Email</Typography>
-              </div>
-            </div>
-            {studentsData
-              .find((data) => data.lectureId === course.id)
-              ?.students.map((student) => (
-                <div
-                  key={student.id}
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    marginBottom: "0.2rem",
-                  }}
-                >
-                  <div style={{ flex: 2, marginRight: "1rem" }}>
-                    {student.userName}
-                  </div>
-                  <div style={{ flex: 2, marginRight: "1rem" }}>
-                    {student.userSchoolNumber}
-                  </div>
-                  <div style={{ flex: 2 }}>{student.userEmail}</div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                <div style={{ flex: 2, marginRight: "5rem" }}>
+                  {" "}
+                  <Typography variant="body2">Student Name</Typography>
                 </div>
-              ))}
-          </AccordionDetails>
-        </Accordion>
-      ))}
+                <div style={{ flex: 2, marginRight: "5rem" }}>
+                  {" "}
+                  <Typography variant="body2">School Number</Typography>
+                </div>
+                <div style={{ flex: 2 }}>
+                  <Typography variant="body2">Email</Typography>
+                </div>
+              </div>
+              {studentsData
+                .find((data) => data.lectureId === course.id)
+                ?.students.map((student) => (
+                  <div
+                    key={student.id}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      marginBottom: "0.2rem",
+                    }}
+                  >
+                    <div style={{ flex: 2, marginRight: "1rem" }}>
+                      {student.userName}
+                    </div>
+                    <div style={{ flex: 2, marginRight: "1rem" }}>
+                      {student.userSchoolNumber}
+                    </div>
+                    <div style={{ flex: 2 }}>{student.userEmail}</div>
+                  </div>
+                ))}
+            </AccordionDetails>
+          </Accordion>
+        ))
+      ) : (
+        <Typography variant="h6">You didn't assign to any courses.</Typography>
+      )}
     </Box>
   );
 }

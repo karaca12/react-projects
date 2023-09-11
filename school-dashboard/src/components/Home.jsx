@@ -53,29 +53,35 @@ const Home = () => {
       <Typography variant="h2" textAlign="center">
         My Courses
       </Typography>
-      {courses.map((course) => (
-        <Accordion
-          sx={{
-            mt: "1rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "80%",
-          }}
-          key={course.lectureName}
-          expanded={expanded === course.lectureName}
-          onChange={handleChange(course.lectureName)}
-        >
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6">
-              {course.lectureName} - {course.lectureLecturerName}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body2">{course.lectureDescription}</Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+      {courses.length !== 0 ? (
+        courses.map((course) => (
+          <Accordion
+            sx={{
+              mt: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "80%",
+            }}
+            key={course.lectureName}
+            expanded={expanded === course.lectureName}
+            onChange={handleChange(course.lectureName)}
+          >
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="h6">
+                {course.lectureName} - {course.lectureLecturerName}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography variant="body2">
+                {course.lectureDescription}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))
+      ) : (
+        <Typography variant="h6">You didn't assign to any courses.</Typography>
+      )}
     </Box>
   );
 };

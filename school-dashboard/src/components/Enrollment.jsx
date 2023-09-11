@@ -84,49 +84,55 @@ function Enrollment() {
         Course Enrollment
       </Typography>
       <SuccessAlert show={showSuccessAlert} message={successMessage} />
-      {courses.map((course) => (
-        <Accordion
-          sx={{
-            mt: "1rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            width: "80%",
-          }}
-          key={course.lectureName}
-          expanded={expanded === course.lectureName}
-          onChange={handleChange(course.lectureName)}
-        >
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6">
-              {course.lectureName} - {course.lectureLecturerName}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails
-            style={{
-              flex: "1",
+      {courses.length !== 0 ? (
+        courses.map((course) => (
+          <Accordion
+            sx={{
+              mt: "1rem",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between",
-              gap: "1rem",
+              alignItems: "center",
+              width: "80%",
             }}
+            key={course.lectureName}
+            expanded={expanded === course.lectureName}
+            onChange={handleChange(course.lectureName)}
           >
-            <Typography variant="body2">{course.lectureDescription}</Typography>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <Button
-                onClick={() => {
-                  setShowSuccessAlert(false);
-                  enrollToLecture(course.lectureName);
-                }}
-                variant="contained"
-                color="primary"
-              >
-                Enroll
-              </Button>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-      ))}
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="h6">
+                {course.lectureName} - {course.lectureLecturerName}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails
+              style={{
+                flex: "1",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "1rem",
+              }}
+            >
+              <Typography variant="body2">
+                {course.lectureDescription}
+              </Typography>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Button
+                  onClick={() => {
+                    setShowSuccessAlert(false);
+                    enrollToLecture(course.lectureName);
+                  }}
+                  variant="contained"
+                  color="primary"
+                >
+                  Enroll
+                </Button>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+        ))
+      ) : (
+        <Typography variant="h6">There are no courses to enroll.</Typography>
+      )}
       <ConfirmationDialog
         open={confirmDialogOpen}
         onClose={() => setConfirmDialogOpen(false)}
