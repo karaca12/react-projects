@@ -77,6 +77,7 @@ function Drop() {
         ":hover": {
           boxShadow: "10px 10px 20px #ccc",
         },
+        bgcolor: "#fdefd0",
       }}
     >
       <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
@@ -92,6 +93,7 @@ function Drop() {
               flexDirection: "column",
               alignItems: "center",
               width: "80%",
+              bgcolor: "#e9e7ef",
             }}
             key={course.lectureName}
             expanded={expanded === course.lectureName}
@@ -121,7 +123,7 @@ function Drop() {
                     dropLecture(course.lectureName);
                   }}
                   variant="contained"
-                  color="primary"
+                  sx={{ bgcolor: "#5a395b", "&:hover": { bgcolor: "#5a395b" } }}
                 >
                   Drop
                 </Button>

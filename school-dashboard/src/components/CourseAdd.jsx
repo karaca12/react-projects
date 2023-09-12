@@ -68,6 +68,7 @@ const CourseAdd = () => {
         ":hover": {
           boxShadow: "10px 10px 20px #ccc",
         },
+        bgcolor: "#fdefd0",
       }}
     >
       <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
@@ -82,7 +83,9 @@ const CourseAdd = () => {
         margin="normal"
         variant="outlined"
         placeholder="Course Name"
-        helperText="Please enter the course name"
+        label="Please enter the course name"
+        color="secondary"
+        focused
       />
       <TextField
         required
@@ -94,17 +97,22 @@ const CourseAdd = () => {
         placeholder="Course Description"
         multiline
         rows={10}
-        style={{ width: "100%" }}
-        helperText="Please enter the course description"
+        sx={{ width: "100%" }}
+        label="Please enter the course description"
+        color="secondary"
+        focused
       />
       <Button
         variant="contained"
-        color="primary"
         onClick={() => {
           handleSubmit();
           setShowSuccessAlert(false);
         }}
-        style={{ marginTop: "1rem" }}
+        sx={{
+          marginTop: "1rem",
+          bgcolor: "#5a395b",
+          "&:hover": { bgcolor: "#5a395b" },
+        }}
       >
         Add Course
       </Button>

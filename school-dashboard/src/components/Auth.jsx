@@ -121,10 +121,11 @@ const Auth = () => {
             ":hover": {
               boxShadow: "10px 10px 20px #ccc",
             },
+            bgcolor: "#fdefd0",
           }}
         >
-          <Typography variant="h2" textAlign="center">
-            {isSignup ? "Sign-up" : "Sign-in"}
+          <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+            {isSignup ? "Sign-Up" : "Sign-In"}
           </Typography>
           <ErrorAlert show={error.show} message={error.message} />
           <TextField
@@ -135,10 +136,12 @@ const Auth = () => {
             margin="normal"
             variant="outlined"
             placeholder="School Number"
-            helperText="Please enter your school number"
+            label="Please enter your school number"
             inputProps={{
               maxLength: 9,
             }}
+            color="secondary"
+            focused
           />
           <TextField
             required
@@ -149,7 +152,9 @@ const Auth = () => {
             type="password"
             variant="outlined"
             placeholder="Password"
-            helperText="Please enter your password"
+            label="Please enter your password"
+            color="secondary"
+            focused
           />
           {isSignup && (
             <>
@@ -161,7 +166,9 @@ const Auth = () => {
                 margin="normal"
                 variant="outlined"
                 placeholder="Full Name"
-                helperText="Please enter your name"
+                label="Please enter your name"
+                color="secondary"
+                focused
               />
               <TextField
                 required
@@ -172,7 +179,9 @@ const Auth = () => {
                 type="email"
                 variant="outlined"
                 placeholder="E-Mail"
-                helperText="Please enter your E-Mail"
+                label="Please enter your E-Mail"
+                color="secondary"
+                focused
               />
               <TextField
                 required
@@ -183,7 +192,9 @@ const Auth = () => {
                 type="phone"
                 variant="outlined"
                 placeholder="Phone Number"
-                helperText="Please enter your phone number"
+                label="Please enter your phone number"
+                color="secondary"
+                focused
               />
               <TextField
                 required
@@ -193,10 +204,12 @@ const Auth = () => {
                 margin="normal"
                 variant="outlined"
                 placeholder="National Identity Number"
-                helperText="Please enter your identity number"
+                label="Please enter your identity number"
                 inputProps={{
                   maxLength: 11,
                 }}
+                color="secondary"
+                focused
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
@@ -204,19 +217,13 @@ const Auth = () => {
                   onChange={handleDateChange}
                   sx={{ maxWidth: 225, margin: "10px" }}
                   label={"Birth Date"}
-                  slotProps={{
-                    textField: {
-                      helperText: "Please enter your birth date",
-                    },
-                  }}
                 />
               </LocalizationProvider>
               <Autocomplete
                 onChange={handleRoleChange}
                 value={inputs.UserRole}
-                sx={{ margin: "10px" }}
+                sx={{ margin: "10px", width: 225 }}
                 options={roleoptions}
-                style={{ width: 225 }}
                 renderInput={(params) => (
                   <TextField {...params} label="Please pick your role" />
                 )}
@@ -225,10 +232,14 @@ const Auth = () => {
           )}
           <Button
             type="submit"
-            sx={{ marginTop: 3, borderRadius: 3 }}
+            sx={{
+              marginTop: 3,
+              borderRadius: 3,
+              bgcolor: "#5a395b",
+              "&:hover": { bgcolor: "#5a395b" },
+            }}
             cha
             variant="contained"
-            color="warning"
             onClick={() => {
               setError({
                 show: false,
@@ -238,7 +249,11 @@ const Auth = () => {
           >
             {isSignup ? "Sign-up" : "Sign-in"}
           </Button>
-          <Button onClick={resetState} sx={{ marginTop: 3, borderRadius: 3 }}>
+          <Button
+            onClick={resetState}
+            sx={{ marginTop: 3, borderRadius: 3 }}
+            color="secondary"
+          >
             {isSignup
               ? "Already have an account? Sign-in from here"
               : "Don't have an account? Sign-up from here"}

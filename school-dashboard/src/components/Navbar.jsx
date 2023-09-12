@@ -26,7 +26,7 @@ export default function Navbar() {
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="primary">
+      <AppBar position="static" color="primary" sx={{ bgcolor: "#5a395b" }}>
         <Toolbar>
           <IconButton
             size="large"
@@ -39,7 +39,7 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Bla bla University -{" "}
+            Fusion University -{" "}
             {user != null && "" + user.userName + " - " + user.userRole}
           </Typography>
           <SignOutButton />

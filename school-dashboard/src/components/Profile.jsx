@@ -171,7 +171,7 @@ const Profile = () => {
       <Box
         display="flex"
         flexDirection={"column"}
-        maxWidth={400}
+        maxWidth={600}
         alignItems={"center"}
         justifyContent={"center"}
         margin={"auto"}
@@ -183,6 +183,7 @@ const Profile = () => {
           ":hover": {
             boxShadow: "10px 10px 20px #ccc",
           },
+          bgcolor: "#fdefd0",
         }}
       >
         {isView ? (
@@ -218,17 +219,25 @@ const Profile = () => {
             </Typography>
             <Button
               onClick={toggleViewToEdit}
-              sx={{ marginTop: 3, borderRadius: 3 }}
+              sx={{
+                marginTop: 3,
+                borderRadius: 3,
+                bgcolor: "#5a395b",
+                "&:hover": { bgcolor: "#5a395b" },
+              }}
               variant="contained"
-              color="primary"
             >
               Edit Profile
             </Button>
             <Button
               onClick={toggleViewToPassword}
-              sx={{ marginTop: 3, borderRadius: 3 }}
+              sx={{
+                marginTop: 3,
+                borderRadius: 3,
+                bgcolor: "#5a395b",
+                "&:hover": { bgcolor: "#5a395b" },
+              }}
               variant="contained"
-              color="primary"
             >
               Change Password
             </Button>
@@ -243,7 +252,7 @@ const Profile = () => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                width: "225px",
+                width: "400px",
               }}
             >
               <TextField
@@ -253,7 +262,9 @@ const Profile = () => {
                 margin="normal"
                 variant="outlined"
                 placeholder="Full Name"
-                helperText="Please enter your name if you want to change it"
+                label="Please enter your name if you want to change it"
+                color="secondary"
+                focused
               />
               <TextField
                 required
@@ -262,7 +273,9 @@ const Profile = () => {
                 margin="normal"
                 variant="outlined"
                 placeholder="National Identity Number"
-                helperText="Please enter your national identity number if you want to change it"
+                label="Please enter your national identity number if you want to change it"
+                color="secondary"
+                focused
               />
               <TextField
                 required
@@ -272,7 +285,9 @@ const Profile = () => {
                 type="email"
                 variant="outlined"
                 placeholder="E-Mail"
-                helperText="Please enter your E-Mail if you want to change it"
+                label="Please enter your E-Mail if you want to change it"
+                color="secondary"
+                focused
               />
               <TextField
                 required
@@ -282,20 +297,16 @@ const Profile = () => {
                 type="phone"
                 variant="outlined"
                 placeholder="Phone Number"
-                helperText="Please enter your phone number if you want to change it"
+                label="Please enter your phone number if you want to change it"
+                color="secondary"
+                focused
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   required
                   onChange={handleDateChange}
-                  sx={{ marginTop: "10px", width: "225px" }}
+                  sx={{ marginTop: "10px", width: "400px" }}
                   label={"Birth Date"}
-                  slotProps={{
-                    textField: {
-                      helperText:
-                        "Please enter your birth date if you want to change it",
-                    },
-                  }}
                 />
               </LocalizationProvider>
               <Button
@@ -303,17 +314,21 @@ const Profile = () => {
                   handleOpenUpdateProfileDialog();
                   setShowSuccessAlert(false);
                 }}
-                sx={{ marginTop: 3, borderRadius: 3 }}
+                sx={{
+                  marginTop: 3,
+                  borderRadius: 3,
+                  bgcolor: "#5a395b",
+                  "&:hover": { bgcolor: "#5a395b" },
+                }}
                 variant="contained"
-                color="primary"
               >
                 Update Profile
               </Button>
               <Button
                 onClick={handleOpenCancelEditingDialog}
                 sx={{ marginTop: 3, borderRadius: 3 }}
-                variant="outlined"
-                color="secondary"
+                variant="contained"
+                color="error"
               >
                 Cancel Editing
               </Button>
@@ -332,7 +347,7 @@ const Profile = () => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                width: "225px",
+                width: "400px",
               }}
             >
               <ErrorAlert show={error.show} message={error.message} />
@@ -344,7 +359,9 @@ const Profile = () => {
                 type="password"
                 variant="outlined"
                 placeholder="Password Already In Use"
-                helperText="Please enter your already in use password"
+                label="Please enter your already in use password"
+                color="secondary"
+                focused
               />
               <TextField
                 required
@@ -354,8 +371,11 @@ const Profile = () => {
                 variant="outlined"
                 type="password"
                 placeholder="New Password"
-                helperText="Please enter your new password"
+                label="Please enter your new password"
+                color="secondary"
+                focused
               />
+
               <Button
                 onClick={() => {
                   handleOpenChangePasswordDialog();
@@ -365,17 +385,21 @@ const Profile = () => {
                     message: "",
                   });
                 }}
-                sx={{ marginTop: 3, borderRadius: 3 }}
+                sx={{
+                  marginTop: 3,
+                  borderRadius: 3,
+                  bgcolor: "#5a395b",
+                  "&:hover": { bgcolor: "#5a395b" },
+                }}
                 variant="contained"
-                color="primary"
               >
                 Change Password
               </Button>
               <Button
                 onClick={handleOpenCancelPasswordDialog}
                 sx={{ marginTop: 3, borderRadius: 3 }}
-                variant="outlined"
-                color="secondary"
+                variant="contained"
+                color="error"
               >
                 Cancel
               </Button>

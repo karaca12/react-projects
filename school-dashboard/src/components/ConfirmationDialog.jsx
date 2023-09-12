@@ -23,7 +23,7 @@ function ConfirmationDialog({ open, onClose, onConfirm, title, content }) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">
+        <Button onClick={onClose} color="error">
           No
         </Button>
         <Button onClick={onConfirm} color="primary">

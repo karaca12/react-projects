@@ -106,6 +106,7 @@ function CourseUpdate() {
         ":hover": {
           boxShadow: "10px 10px 20px #ccc",
         },
+        bgcolor: "#fdefd0",
       }}
     >
       <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
@@ -122,6 +123,7 @@ function CourseUpdate() {
                 flexDirection: "column",
                 alignItems: "center",
                 width: "80%",
+                bgcolor: "#e9e7ef",
               }}
               key={course.lectureName}
               expanded={expanded === course.lectureName}
@@ -156,7 +158,10 @@ function CourseUpdate() {
                       setSelectedCourse(course.lectureName);
                     }}
                     variant="contained"
-                    color="primary"
+                    sx={{
+                      bgcolor: "#5a395b",
+                      "&:hover": { bgcolor: "#5a395b" },
+                    }}
                   >
                     Update
                   </Button>
@@ -179,7 +184,9 @@ function CourseUpdate() {
             margin="normal"
             variant="outlined"
             placeholder="Course Name"
-            helperText="Please enter the course name"
+            label="Please enter the course name"
+            color="secondary"
+            focused
           />
           <TextField
             required
@@ -191,25 +198,30 @@ function CourseUpdate() {
             placeholder="Course Description"
             multiline
             rows={10}
-            style={{ width: "100%" }}
-            helperText="Please enter the course description"
+            sx={{ width: "100%" }}
+            label="Please enter the course description"
+            color="secondary"
+            focused
           />
           <Button
             variant="contained"
-            color="primary"
             onClick={() => {
               handleOpenUpdateDialog();
               setShowSuccessAlert(false);
             }}
-            style={{ marginTop: "1rem" }}
+            sx={{
+              marginTop: "1rem",
+              bgcolor: "#5a395b",
+              "&:hover": { bgcolor: "#5a395b" },
+            }}
           >
             Update
           </Button>
           <Button
             onClick={handleOpenCancelDialog}
             sx={{ marginTop: 3, borderRadius: 3 }}
-            variant="outlined"
-            color="secondary"
+            variant="contained"
+            color="error"
           >
             Cancel
           </Button>
