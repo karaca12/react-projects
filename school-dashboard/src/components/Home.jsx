@@ -50,7 +50,7 @@ const Home = () => {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
         My Courses
       </Typography>
       {courses.length !== 0 ? (

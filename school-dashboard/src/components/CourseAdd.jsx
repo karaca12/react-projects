@@ -70,7 +70,7 @@ const CourseAdd = () => {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
         Add Course
       </Typography>
       <SuccessAlert show={showSuccessAlert} message={successMessage} />

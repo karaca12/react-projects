@@ -80,7 +80,7 @@ function Enrollment() {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
         Course Enrollment
       </Typography>
       <SuccessAlert show={showSuccessAlert} message={successMessage} />

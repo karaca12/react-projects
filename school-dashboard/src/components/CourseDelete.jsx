@@ -79,7 +79,7 @@ function CourseDelete() {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
         Delete Course
       </Typography>
       <SuccessAlert show={showSuccessAlert} message={successMessage} />

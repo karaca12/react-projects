@@ -70,7 +70,7 @@ function Students() {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
         Students
       </Typography>
       {courses.length !== 0 ? (

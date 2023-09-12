@@ -193,7 +193,7 @@ const Auth = () => {
                 margin="normal"
                 variant="outlined"
                 placeholder="National Identity Number"
-                helperText="Please enter your national identity number"
+                helperText="Please enter your identity number"
                 inputProps={{
                   maxLength: 11,
                 }}
@@ -204,6 +204,11 @@ const Auth = () => {
                   onChange={handleDateChange}
                   sx={{ maxWidth: 225, margin: "10px" }}
                   label={"Birth Date"}
+                  slotProps={{
+                    textField: {
+                      helperText: "Please enter your birth date",
+                    },
+                  }}
                 />
               </LocalizationProvider>
               <Autocomplete
@@ -212,7 +217,9 @@ const Auth = () => {
                 sx={{ margin: "10px" }}
                 options={roleoptions}
                 style={{ width: 225 }}
-                renderInput={(params) => <TextField {...params} label="Role" />}
+                renderInput={(params) => (
+                  <TextField {...params} label="Please pick your role" />
+                )}
               />
             </>
           )}

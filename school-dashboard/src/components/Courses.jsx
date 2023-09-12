@@ -45,7 +45,7 @@ const Courses = () => {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
         All Courses
       </Typography>
       {courses.length !== 0 ? (

@@ -99,7 +99,7 @@ const Profile = () => {
     }));
   };
 
-  const handleUpdate = async () => {
+  const handleUpdateProfile = async () => {
     try {
       const response = await axios.put(
         `https://localhost:44305/users/updatebyid/${user.id}`,
@@ -187,7 +187,7 @@ const Profile = () => {
       >
         {isView ? (
           <>
-            <Typography variant="h2" textAlign="center">
+            <Typography sx={{ margin: 5 }} variant="h2" textAlign="center">
               User Profile
             </Typography>
             <SuccessAlert show={showSuccessAlert} message={successMessage} />
@@ -234,143 +234,153 @@ const Profile = () => {
             </Button>
           </>
         ) : isEditing ? (
-          <form
-            onSubmit={handleUpdate}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "225px",
-            }}
-          >
-            <Typography variant="h2" textAlign="center">
+          <>
+            <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
               Edit Profile
             </Typography>
-            <TextField
-              required
-              onChange={handleChange}
-              name="UserName"
-              margin="normal"
-              variant="outlined"
-              placeholder="Full Name"
-              helperText="Please enter your name"
-            />
-            <TextField
-              required
-              onChange={handleChange}
-              name="UserNationalIdentity"
-              margin="normal"
-              variant="outlined"
-              placeholder="National Identity Number"
-              helperText="Please enter your national identity number"
-            />
-            <TextField
-              required
-              onChange={handleChange}
-              name="UserEmail"
-              margin="normal"
-              type="email"
-              variant="outlined"
-              placeholder="E-Mail"
-              helperText="Please enter your E-Mail"
-            />
-            <TextField
-              required
-              onChange={handleChange}
-              name="UserPhone"
-              margin="normal"
-              type="phone"
-              variant="outlined"
-              placeholder="Phone Number"
-              helperText="Please enter your phone number"
-            />
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker
-                required
-                onChange={handleDateChange}
-                sx={{ marginTop: "10px", width: "225px" }}
-                label={"Birth Date"}
-              />
-            </LocalizationProvider>
-            <Button
-              onClick={() => {
-                handleOpenUpdateProfileDialog();
-                setShowSuccessAlert(false);
+            <form
+              onSubmit={handleUpdateProfile}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "225px",
               }}
-              sx={{ marginTop: 3, borderRadius: 3 }}
-              variant="contained"
-              color="primary"
             >
-              Update Profile
-            </Button>
-            <Button
-              onClick={handleOpenCancelEditingDialog}
-              sx={{ marginTop: 3, borderRadius: 3 }}
-              variant="outlined"
-              color="secondary"
-            >
-              Cancel Editing
-            </Button>
-          </form>
+              <TextField
+                required
+                onChange={handleChange}
+                name="UserName"
+                margin="normal"
+                variant="outlined"
+                placeholder="Full Name"
+                helperText="Please enter your name if you want to change it"
+              />
+              <TextField
+                required
+                onChange={handleChange}
+                name="UserNationalIdentity"
+                margin="normal"
+                variant="outlined"
+                placeholder="National Identity Number"
+                helperText="Please enter your national identity number if you want to change it"
+              />
+              <TextField
+                required
+                onChange={handleChange}
+                name="UserEmail"
+                margin="normal"
+                type="email"
+                variant="outlined"
+                placeholder="E-Mail"
+                helperText="Please enter your E-Mail if you want to change it"
+              />
+              <TextField
+                required
+                onChange={handleChange}
+                name="UserPhone"
+                margin="normal"
+                type="phone"
+                variant="outlined"
+                placeholder="Phone Number"
+                helperText="Please enter your phone number if you want to change it"
+              />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  required
+                  onChange={handleDateChange}
+                  sx={{ marginTop: "10px", width: "225px" }}
+                  label={"Birth Date"}
+                  slotProps={{
+                    textField: {
+                      helperText:
+                        "Please enter your birth date if you want to change it",
+                    },
+                  }}
+                />
+              </LocalizationProvider>
+              <Button
+                onClick={() => {
+                  handleOpenUpdateProfileDialog();
+                  setShowSuccessAlert(false);
+                }}
+                sx={{ marginTop: 3, borderRadius: 3 }}
+                variant="contained"
+                color="primary"
+              >
+                Update Profile
+              </Button>
+              <Button
+                onClick={handleOpenCancelEditingDialog}
+                sx={{ marginTop: 3, borderRadius: 3 }}
+                variant="outlined"
+                color="secondary"
+              >
+                Cancel Editing
+              </Button>
+            </form>
+          </>
         ) : (
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleChangePassword();
-            }}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "225px",
-            }}
-          >
-            <Typography variant="h2" textAlign="center">
+          <>
+            <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
               Change Password
             </Typography>
-            <ErrorAlert show={error.show} message={error.message} />
-            <TextField
-              required
-              onChange={handlePassword}
-              name="UserPasswordValidation"
-              margin="normal"
-              type="password"
-              variant="outlined"
-              placeholder="Password Already In Use"
-              helperText="Please enter your already in use password"
-            />
-            <TextField
-              required
-              onChange={handlePassword}
-              name="UserPassword"
-              margin="normal"
-              variant="outlined"
-              type="password"
-              placeholder="New Password"
-              helperText="Please enter your new password"
-            />
-            <Button
-              onClick={() => {
-                handleOpenChangePasswordDialog();
-                setShowSuccessAlert(false);
-                setError({
-                  show: false,
-                  message: "",
-                });
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleChangePassword();
               }}
-              sx={{ marginTop: 3, borderRadius: 3 }}
-              variant="contained"
-              color="primary"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "225px",
+              }}
             >
-              Change Password
-            </Button>
-            <Button
-              onClick={handleOpenCancelPasswordDialog}
-              sx={{ marginTop: 3, borderRadius: 3 }}
-              variant="outlined"
-              color="secondary"
-            >
-              Cancel
-            </Button>
-          </form>
+              <ErrorAlert show={error.show} message={error.message} />
+              <TextField
+                required
+                onChange={handlePassword}
+                name="UserPasswordValidation"
+                margin="normal"
+                type="password"
+                variant="outlined"
+                placeholder="Password Already In Use"
+                helperText="Please enter your already in use password"
+              />
+              <TextField
+                required
+                onChange={handlePassword}
+                name="UserPassword"
+                margin="normal"
+                variant="outlined"
+                type="password"
+                placeholder="New Password"
+                helperText="Please enter your new password"
+              />
+              <Button
+                onClick={() => {
+                  handleOpenChangePasswordDialog();
+                  setShowSuccessAlert(false);
+                  setError({
+                    show: false,
+                    message: "",
+                  });
+                }}
+                sx={{ marginTop: 3, borderRadius: 3 }}
+                variant="contained"
+                color="primary"
+              >
+                Change Password
+              </Button>
+              <Button
+                onClick={handleOpenCancelPasswordDialog}
+                sx={{ marginTop: 3, borderRadius: 3 }}
+                variant="outlined"
+                color="secondary"
+              >
+                Cancel
+              </Button>
+            </form>
+          </>
         )}
         <ConfirmationDialog
           open={cancelEditingDialogOpen}
@@ -389,7 +399,7 @@ const Profile = () => {
           onClose={handleCloseUpdateProfileDialog}
           onConfirm={() => {
             handleCloseUpdateProfileDialog();
-            handleUpdate();
+            handleUpdateProfile();
           }}
           title={"Update Profile"}
           content={"Are you sure you want to update your profile?"}

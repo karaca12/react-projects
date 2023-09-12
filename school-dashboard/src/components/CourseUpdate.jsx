@@ -17,7 +17,6 @@ import TextField from "@mui/material/TextField";
 function CourseUpdate() {
   const [courses, setCourses] = useState([]);
   const [expanded, setExpanded] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState(null);
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [isView, setIsView] = useState(true);
@@ -29,6 +28,7 @@ function CourseUpdate() {
     LectureDescription: "",
     LectureLecturerName: user.userName,
   });
+  const [selectedCourse, setSelectedCourse] = useState(null);
   const userSchoolNumber = user?.userSchoolNumber;
 
   const handleOpenCancelDialog = () => {
@@ -108,8 +108,8 @@ function CourseUpdate() {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
-        Update Course
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+        {isView ? "Update Course" : "Update " + selectedCourse}
       </Typography>
       <SuccessAlert show={showSuccessAlert} message={successMessage} />
       {isView ? (
@@ -149,6 +149,10 @@ function CourseUpdate() {
                     onClick={() => {
                       setShowSuccessAlert(false);
                       setIsView(false);
+                      setLecture({
+                        LectureName: course.lectureName,
+                        LectureDescription: course.lectureDescription,
+                      });
                       setSelectedCourse(course.lectureName);
                     }}
                     variant="contained"

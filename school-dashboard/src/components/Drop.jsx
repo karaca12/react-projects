@@ -79,7 +79,7 @@ function Drop() {
         },
       }}
     >
-      <Typography variant="h2" textAlign="center">
+      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
         Drop Course
       </Typography>
       <SuccessAlert show={showSuccessAlert} message={successMessage} />
