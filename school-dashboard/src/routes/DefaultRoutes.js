@@ -9,6 +9,7 @@ import CourseAdd from "../components/CourseAdd";
 import Profile from "../components/Profile";
 import CourseDelete from "../components/CourseDelete";
 import Students from "../components/Students";
+import CourseUpdate from "../components/CourseUpdate";
 import { useUser } from "../components/UserContext";
 
 const DefaultRoutes = () => {
@@ -66,6 +67,16 @@ const DefaultRoutes = () => {
         element={
           user && user.userRole === "Lecturer" ? (
             <Students />
+          ) : (
+            <Navigate to="/auth" />
+          )
+        }
+      />
+      <Route
+        path="/courseupdate"
+        element={
+          user && user.userRole === "Lecturer" ? (
+            <CourseUpdate />
           ) : (
             <Navigate to="/auth" />
           )

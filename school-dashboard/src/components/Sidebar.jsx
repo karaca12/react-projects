@@ -13,6 +13,7 @@ import NoteAddIcon from "@mui/icons-material/NoteAdd";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import DeleteIcon from "@mui/icons-material/Delete";
 import GroupsIcon from "@mui/icons-material/Groups";
+import EditNoteIcon from "@mui/icons-material/EditNote";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
 
@@ -59,6 +60,12 @@ export default function Sidebar({ state, setState, toggleDrawer }) {
                 <DeleteIcon />
               </ListItemIcon>
               <ListItemText>Delete Course</ListItemText>
+            </ListItemButton>
+            <ListItemButton onClick={() => navigate("/courseupdate")}>
+              <ListItemIcon>
+                <EditNoteIcon />
+              </ListItemIcon>
+              <ListItemText>Update Course</ListItemText>
             </ListItemButton>
             <ListItemButton onClick={() => navigate("/students")}>
               <ListItemIcon>

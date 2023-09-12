@@ -394,7 +394,7 @@ const Profile = () => {
           title={"Update Profile"}
           content={"Are you sure you want to update your profile?"}
         />
-        <ConfirmationDialog //this the final click to confirming the change
+        <ConfirmationDialog
           open={changePasswordDialogOpen}
           onClose={handleCloseChangePasswordDialog}
           onConfirm={() => {

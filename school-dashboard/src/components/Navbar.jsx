@@ -39,7 +39,8 @@ export default function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Bla bla University - {user != null && "" + user.userName}
+            Bla bla University -{" "}
+            {user != null && "" + user.userName + " - " + user.userRole}
           </Typography>
           <SignOutButton />
         </Toolbar>

@@ -73,6 +73,7 @@ const CourseAdd = () => {
       <Typography variant="h2" textAlign="center">
         Add Course
       </Typography>
+      <SuccessAlert show={showSuccessAlert} message={successMessage} />
       <TextField
         required
         onChange={handleChange}
@@ -107,7 +108,6 @@ const CourseAdd = () => {
       >
         Add Course
       </Button>
-      <SuccessAlert show={showSuccessAlert} message={successMessage} />
       <ConfirmationDialog
         open={confirmDialogOpen}
         onClose={() => setConfirmDialogOpen(false)}
