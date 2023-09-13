@@ -87,11 +87,13 @@ const Home = () => {
               >
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography variant="h6">
-                    {user.userRole === "Student"
-                      ? course.lectureName +
-                        " - Lecturer: " +
-                        course.lectureLecturerName
-                      : course.lectureName}
+                    <strong>
+                      {user.userRole === "Student"
+                        ? course.lectureName +
+                          " - Lecturer: " +
+                          course.lectureLecturerName
+                        : course.lectureName}
+                    </strong>
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>

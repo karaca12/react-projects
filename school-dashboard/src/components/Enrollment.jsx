@@ -118,7 +118,9 @@ function Enrollment() {
               >
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography variant="h6">
-                    {course.lectureName} - {course.lectureLecturerName}
+                    <strong>
+                      {course.lectureName} - {course.lectureLecturerName}
+                    </strong>
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails

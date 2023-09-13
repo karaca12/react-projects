@@ -198,6 +198,7 @@ const Profile = () => {
               User Profile
             </Typography>
             <SuccessAlert show={showSuccessAlert} message={successMessage} />
+
             <Typography variant="body1">
               <strong>Name:</strong> {user.userName}
             </Typography>
@@ -253,163 +254,143 @@ const Profile = () => {
             <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
               Edit Profile
             </Typography>
-            <form
-              onSubmit={handleUpdateProfile}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "400px",
+            <TextField
+              required
+              onChange={handleChange}
+              name="UserName"
+              margin="normal"
+              variant="outlined"
+              placeholder="Full Name"
+              label="Please enter your name if you want to change it"
+              color="secondary"
+              focused
+            />
+            <TextField
+              required
+              onChange={handleChange}
+              name="UserNationalIdentity"
+              margin="normal"
+              variant="outlined"
+              placeholder="National Identity Number"
+              label="Please enter your national identity number if you want to change it"
+              color="secondary"
+              focused
+            />
+            <TextField
+              required
+              onChange={handleChange}
+              name="UserEmail"
+              margin="normal"
+              type="email"
+              variant="outlined"
+              placeholder="E-Mail"
+              label="Please enter your E-Mail if you want to change it"
+              color="secondary"
+              focused
+            />
+            <TextField
+              required
+              onChange={handleChange}
+              name="UserPhone"
+              margin="normal"
+              type="phone"
+              variant="outlined"
+              placeholder="Phone Number"
+              label="Please enter your phone number if you want to change it"
+              color="secondary"
+              focused
+            />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker
+                required
+                onChange={handleDateChange}
+                sx={{ marginTop: "10px", width: "225px" }}
+                label={"Birth Date"}
+              />
+            </LocalizationProvider>
+            <Button
+              onClick={() => {
+                handleOpenUpdateProfileDialog();
+                setShowSuccessAlert(false);
               }}
+              sx={{
+                marginTop: 3,
+                borderRadius: 3,
+                bgcolor: "#5a395b",
+                "&:hover": { bgcolor: "#5a395b" },
+              }}
+              variant="contained"
             >
-              <TextField
-                required
-                onChange={handleChange}
-                name="UserName"
-                margin="normal"
-                variant="outlined"
-                placeholder="Full Name"
-                label="Please enter your name if you want to change it"
-                color="secondary"
-                focused
-              />
-              <TextField
-                required
-                onChange={handleChange}
-                name="UserNationalIdentity"
-                margin="normal"
-                variant="outlined"
-                placeholder="National Identity Number"
-                label="Please enter your national identity number if you want to change it"
-                color="secondary"
-                focused
-              />
-              <TextField
-                required
-                onChange={handleChange}
-                name="UserEmail"
-                margin="normal"
-                type="email"
-                variant="outlined"
-                placeholder="E-Mail"
-                label="Please enter your E-Mail if you want to change it"
-                color="secondary"
-                focused
-              />
-              <TextField
-                required
-                onChange={handleChange}
-                name="UserPhone"
-                margin="normal"
-                type="phone"
-                variant="outlined"
-                placeholder="Phone Number"
-                label="Please enter your phone number if you want to change it"
-                color="secondary"
-                focused
-              />
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker
-                  required
-                  onChange={handleDateChange}
-                  sx={{ marginTop: "10px", width: "400px" }}
-                  label={"Birth Date"}
-                />
-              </LocalizationProvider>
-              <Button
-                onClick={() => {
-                  handleOpenUpdateProfileDialog();
-                  setShowSuccessAlert(false);
-                }}
-                sx={{
-                  marginTop: 3,
-                  borderRadius: 3,
-                  bgcolor: "#5a395b",
-                  "&:hover": { bgcolor: "#5a395b" },
-                }}
-                variant="contained"
-              >
-                Update Profile
-              </Button>
-              <Button
-                onClick={handleOpenCancelEditingDialog}
-                sx={{ marginTop: 3, borderRadius: 3 }}
-                variant="contained"
-                color="error"
-              >
-                Cancel Editing
-              </Button>
-            </form>
+              Update Profile
+            </Button>
+            <Button
+              onClick={handleOpenCancelEditingDialog}
+              sx={{ marginTop: 3, borderRadius: 3 }}
+              variant="contained"
+              color="error"
+            >
+              Cancel Editing
+            </Button>
           </>
         ) : (
           <>
             <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
               Change Password
             </Typography>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleChangePassword();
-              }}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "400px",
-              }}
-            >
-              <ErrorAlert show={error.show} message={error.message} />
-              <TextField
-                required
-                onChange={handlePassword}
-                name="UserPasswordValidation"
-                margin="normal"
-                type="password"
-                variant="outlined"
-                placeholder="Password Already In Use"
-                label="Please enter your already in use password"
-                color="secondary"
-                focused
-              />
-              <TextField
-                required
-                onChange={handlePassword}
-                name="UserPassword"
-                margin="normal"
-                variant="outlined"
-                type="password"
-                placeholder="New Password"
-                label="Please enter your new password"
-                color="secondary"
-                focused
-              />
 
-              <Button
-                onClick={() => {
-                  handleOpenChangePasswordDialog();
-                  setShowSuccessAlert(false);
-                  setError({
-                    show: false,
-                    message: "",
-                  });
-                }}
-                sx={{
-                  marginTop: 3,
-                  borderRadius: 3,
-                  bgcolor: "#5a395b",
-                  "&:hover": { bgcolor: "#5a395b" },
-                }}
-                variant="contained"
-              >
-                Change Password
-              </Button>
-              <Button
-                onClick={handleOpenCancelPasswordDialog}
-                sx={{ marginTop: 3, borderRadius: 3 }}
-                variant="contained"
-                color="error"
-              >
-                Cancel
-              </Button>
-            </form>
+            <ErrorAlert show={error.show} message={error.message} />
+            <TextField
+              required
+              onChange={handlePassword}
+              name="UserPasswordValidation"
+              margin="normal"
+              type="password"
+              variant="outlined"
+              placeholder="Password Already In Use"
+              label="Please enter your already in use password"
+              color="secondary"
+              focused
+            />
+            <TextField
+              required
+              onChange={handlePassword}
+              name="UserPassword"
+              margin="normal"
+              variant="outlined"
+              type="password"
+              placeholder="New Password"
+              label="Please enter your new password"
+              color="secondary"
+              focused
+            />
+
+            <Button
+              onClick={() => {
+                handleOpenChangePasswordDialog();
+                setShowSuccessAlert(false);
+                setError({
+                  show: false,
+                  message: "",
+                });
+              }}
+              sx={{
+                marginTop: 3,
+                borderRadius: 3,
+                bgcolor: "#5a395b",
+                "&:hover": { bgcolor: "#5a395b" },
+              }}
+              variant="contained"
+            >
+              Change Password
+            </Button>
+            <Button
+              onClick={handleOpenCancelPasswordDialog}
+              sx={{ marginTop: 3, borderRadius: 3 }}
+              variant="contained"
+              color="error"
+            >
+              Cancel
+            </Button>
           </>
         )}
         <ConfirmationDialog
@@ -419,6 +400,7 @@ const Profile = () => {
             handleCloseCancelEditingDialog();
             setIsView(true);
             setIsEditing(false);
+            setShowSuccessAlert(false);
           }}
           title={"Cancel Editing"}
           content={"Are you sure you want to cancel editing?"}
@@ -451,6 +433,7 @@ const Profile = () => {
             handleCloseCancelPasswordDialog();
             setIsView(true);
             setIsEditing(false);
+            setShowSuccessAlert(false);
           }}
           title={"Cancel Change Password"}
           content={"Are you sure you want to cancel changing your password?"}

@@ -136,7 +136,9 @@ function Students() {
                 onChange={handleChange(course.lectureName)}
               >
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h6">{course.lectureName}</Typography>
+                  <Typography variant="h6">
+                    <strong>{course.lectureName}</strong>
+                  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <TableContainer>
@@ -149,7 +151,9 @@ function Students() {
                               direction={sortOrder}
                               onClick={() => handleSort("userName")}
                             >
-                              Student Name
+                              <Typography variant="body1">
+                                <strong>Student Name</strong>
+                              </Typography>
                             </TableSortLabel>
                           </TableCell>
                           <TableCell>
@@ -158,10 +162,16 @@ function Students() {
                               direction={sortOrder}
                               onClick={() => handleSort("userSchoolNumber")}
                             >
-                              School Number
+                              <Typography variant="body1">
+                                <strong>School Number</strong>
+                              </Typography>
                             </TableSortLabel>
                           </TableCell>
-                          <TableCell>Email</TableCell>
+                          <TableCell>
+                            <Typography variant="body1">
+                              <strong>Email</strong>
+                            </Typography>
+                          </TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -171,15 +181,25 @@ function Students() {
                           )?.students
                         ).map((student) => (
                           <TableRow key={student.id}>
-                            <TableCell>{student.userName}</TableCell>
-                            <TableCell>{student.userSchoolNumber}</TableCell>
+                            <TableCell>
+                              <Typography variant="body1">
+                                {student.userName}
+                              </Typography>
+                            </TableCell>
+                            <TableCell>
+                              <Typography variant="body1">
+                                {student.userSchoolNumber}
+                              </Typography>
+                            </TableCell>
                             <TableCell>
                               <Link
                                 href={`mailto:${student.userEmail}`}
                                 underline="hover"
                                 target="_blank"
                               >
-                                {student.userEmail}
+                                <Typography variant="body1">
+                                  {student.userEmail}
+                                </Typography>
                               </Link>
                             </TableCell>
                           </TableRow>

@@ -146,7 +146,9 @@ function CourseUpdate() {
                   onChange={handleChange(course.lectureName)}
                 >
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography variant="h6">{course.lectureName}</Typography>
+                    <Typography variant="h6">
+                      <strong>{course.lectureName}</strong>
+                    </Typography>
                   </AccordionSummary>
                   <AccordionDetails
                     sx={{

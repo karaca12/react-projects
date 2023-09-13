@@ -82,8 +82,10 @@ const Courses = () => {
               >
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography variant="h6">
-                    {course.lectureName} - Lecturer:{" "}
-                    {course.lectureLecturerName}
+                    <strong>
+                      {course.lectureName} - Lecturer:{" "}
+                      {course.lectureLecturerName}
+                    </strong>
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
