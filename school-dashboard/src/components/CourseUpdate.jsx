@@ -90,164 +90,183 @@ function CourseUpdate() {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      maxWidth={1600}
-      alignItems="center"
-      justifyContent="center"
-      margin="auto"
-      marginTop={5}
-      padding={3}
-      spa
-      borderRadius={5}
-      boxShadow="5px 5px 10px #ccc"
-      sx={{
-        ":hover": {
-          boxShadow: "10px 10px 20px #ccc",
-        },
-        bgcolor: "#fdefd0",
+    <div
+      style={{
+        padding: "50px",
+        height: "calc(84vh - 10px)",
+        backgroundColor: "#e9e7ef",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
-      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
-        {isView ? "Update Course" : "Update " + selectedCourse}
-      </Typography>
-      <SuccessAlert show={showSuccessAlert} message={successMessage} />
-      {isView ? (
-        courses.length !== 0 ? (
-          courses.map((course) => (
-            <Accordion
-              sx={{
-                mt: "1rem",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                width: "80%",
-                bgcolor: "#e9e7ef",
-              }}
-              key={course.lectureName}
-              expanded={expanded === course.lectureName}
-              onChange={handleChange(course.lectureName)}
-            >
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="h6">
-                  {course.lectureName} - {course.lectureLecturerName}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails
-                style={{
-                  flex: "1",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  gap: "1rem",
-                }}
-              >
-                <Typography variant="body2">
-                  {course.lectureDescription}
-                </Typography>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <Button
-                    onClick={() => {
-                      setShowSuccessAlert(false);
-                      setIsView(false);
-                      setLecture({
-                        LectureName: course.lectureName,
-                        LectureDescription: course.lectureDescription,
-                      });
-                      setSelectedCourse(course.lectureName);
-                    }}
-                    variant="contained"
-                    sx={{
-                      bgcolor: "#5a395b",
-                      "&:hover": { bgcolor: "#5a395b" },
+      <Box
+        display="flex"
+        flexDirection="column"
+        maxWidth={1600}
+        alignItems="center"
+        justifyContent="center"
+        margin="auto"
+        marginTop={5}
+        padding={3}
+        spa
+        borderRadius={5}
+        boxShadow="5px 5px 10px #ccc"
+        sx={{
+          ":hover": {
+            boxShadow: "10px 10px 20px #ccc",
+          },
+          bgcolor: "#fdefd0",
+        }}
+      >
+        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+          {isView ? "Update Course" : "Update " + selectedCourse}
+        </Typography>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "80%",
+            maxHeight: "550px",
+            overflow: "auto",
+          }}
+        >
+          <SuccessAlert show={showSuccessAlert} message={successMessage} />
+          {isView ? (
+            courses.length !== 0 ? (
+              courses.map((course) => (
+                <Accordion
+                  sx={{
+                    mt: "1rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    width: "80%",
+                    bgcolor: "#e9e7ef",
+                  }}
+                  key={course.lectureName}
+                  expanded={expanded === course.lectureName}
+                  onChange={handleChange(course.lectureName)}
+                >
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Typography variant="h6">{course.lectureName}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails
+                    style={{
+                      flex: "1",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      gap: "1rem",
                     }}
                   >
-                    Update
-                  </Button>
-                </div>
-              </AccordionDetails>
-            </Accordion>
-          ))
-        ) : (
-          <Typography variant="h6">
-            You didn't assign to any courses.
-          </Typography>
-        )
-      ) : (
-        <>
-          <TextField
-            required
-            onChange={handleTextFieldChange}
-            name="LectureName"
-            value={lecture.LectureName}
-            margin="normal"
-            variant="outlined"
-            placeholder="Course Name"
-            label="Please enter the course name"
-            color="secondary"
-            focused
-          />
-          <TextField
-            required
-            onChange={handleTextFieldChange}
-            name="LectureDescription"
-            value={lecture.LectureDescription}
-            margin="normal"
-            variant="outlined"
-            placeholder="Course Description"
-            multiline
-            rows={10}
-            sx={{ width: "100%" }}
-            label="Please enter the course description"
-            color="secondary"
-            focused
-          />
-          <Button
-            variant="contained"
-            onClick={() => {
-              handleOpenUpdateDialog();
-              setShowSuccessAlert(false);
-            }}
-            sx={{
-              marginTop: "1rem",
-              bgcolor: "#5a395b",
-              "&:hover": { bgcolor: "#5a395b" },
-            }}
-          >
-            Update
-          </Button>
-          <Button
-            onClick={handleOpenCancelDialog}
-            sx={{ marginTop: 3, borderRadius: 3 }}
-            variant="contained"
-            color="error"
-          >
-            Cancel
-          </Button>
-        </>
-      )}
-      <ConfirmationDialog
-        open={updateDialogOpen}
-        onClose={handleCloseUpdateDialog}
-        onConfirm={() => {
-          handleUpdateLecture();
-          setIsView(true);
-        }}
-        title={"Confirm Update"}
-        content={"Are you sure you want to update this course?"}
-      />
-      <ConfirmationDialog
-        open={cancelDialogOpen}
-        onClose={() => setCancelDialogOpen(false)}
-        onConfirm={() => {
-          handleCloseCancelDialog();
-          setIsView(true);
-        }}
-        title={"Cancel Update"}
-        content={"Are you sure you want to cancel the update?"}
-      />
-    </Box>
+                    <Typography variant="body2">
+                      {course.lectureDescription}
+                    </Typography>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <Button
+                        onClick={() => {
+                          setShowSuccessAlert(false);
+                          setIsView(false);
+                          setLecture({
+                            LectureName: course.lectureName,
+                            LectureDescription: course.lectureDescription,
+                          });
+                          setSelectedCourse(course.lectureName);
+                        }}
+                        variant="contained"
+                        sx={{
+                          bgcolor: "#5a395b",
+                          "&:hover": { bgcolor: "#5a395b" },
+                        }}
+                      >
+                        Update
+                      </Button>
+                    </div>
+                  </AccordionDetails>
+                </Accordion>
+              ))
+            ) : (
+              <Typography variant="h6">
+                You didn't assign to any courses.
+              </Typography>
+            )
+          ) : (
+            <>
+              <TextField
+                required
+                onChange={handleTextFieldChange}
+                name="LectureName"
+                value={lecture.LectureName}
+                margin="normal"
+                variant="outlined"
+                placeholder="Course Name"
+                label="Please enter the course name"
+                color="secondary"
+                focused
+              />
+              <TextField
+                required
+                onChange={handleTextFieldChange}
+                name="LectureDescription"
+                value={lecture.LectureDescription}
+                margin="normal"
+                variant="outlined"
+                placeholder="Course Description"
+                multiline
+                rows={10}
+                sx={{ width: "100%" }}
+                label="Please enter the course description"
+                color="secondary"
+                focused
+              />
+              <Button
+                variant="contained"
+                onClick={() => {
+                  handleOpenUpdateDialog();
+                  setShowSuccessAlert(false);
+                }}
+                sx={{
+                  marginTop: "1rem",
+                  bgcolor: "#5a395b",
+                  "&:hover": { bgcolor: "#5a395b" },
+                }}
+              >
+                Update
+              </Button>
+              <Button
+                onClick={handleOpenCancelDialog}
+                sx={{ marginTop: 3, borderRadius: 3 }}
+                variant="contained"
+                color="error"
+              >
+                Cancel
+              </Button>
+            </>
+          )}
+        </div>
+        <ConfirmationDialog
+          open={updateDialogOpen}
+          onClose={handleCloseUpdateDialog}
+          onConfirm={() => {
+            handleUpdateLecture();
+            setIsView(true);
+          }}
+          title={"Confirm Update"}
+          content={"Are you sure you want to update  " + selectedCourse + "?"}
+        />
+        <ConfirmationDialog
+          open={cancelDialogOpen}
+          onClose={() => setCancelDialogOpen(false)}
+          onConfirm={() => {
+            handleCloseCancelDialog();
+            setIsView(true);
+          }}
+          title={"Cancel Update"}
+          content={"Are you sure you want to cancel the update?"}
+        />
+      </Box>
+    </div>
   );
 }
 

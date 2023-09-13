@@ -61,87 +61,111 @@ function CourseDelete() {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      maxWidth={1600}
-      alignItems="center"
-      justifyContent="center"
-      margin="auto"
-      marginTop={5}
-      padding={3}
-      spa
-      borderRadius={5}
-      boxShadow="5px 5px 10px #ccc"
-      sx={{
-        ":hover": {
-          boxShadow: "10px 10px 20px #ccc",
-        },
-        bgcolor: "#fdefd0",
+    <div
+      style={{
+        padding: "50px",
+        height: "calc(84vh - 10px)",
+        backgroundColor: "#e9e7ef",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
-      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
-        Delete Course
-      </Typography>
-      <SuccessAlert show={showSuccessAlert} message={successMessage} />
-      {courses.length !== 0 ? (
-        courses.map((course) => (
-          <Accordion
-            sx={{
-              mt: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              width: "80%",
-              bgcolor: "#e9e7ef",
-            }}
-            key={course.lectureName}
-            expanded={expanded === course.lectureName}
-            onChange={handleChange(course.lectureName)}
-          >
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography variant="h6">
-                {course.lectureName} - {course.lectureLecturerName}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails
-              style={{
-                flex: "1",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                gap: "1rem",
-              }}
-            >
-              <Typography variant="body2">
-                {course.lectureDescription}
-              </Typography>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <Button
-                  onClick={() => {
-                    setShowSuccessAlert(false);
-                    deleteLecture(course.lectureName);
+      <Box
+        display="flex"
+        flexDirection="column"
+        maxWidth={1600}
+        alignItems="center"
+        justifyContent="center"
+        margin="auto"
+        marginTop={5}
+        padding={3}
+        spa
+        borderRadius={5}
+        boxShadow="5px 5px 10px #ccc"
+        sx={{
+          ":hover": {
+            boxShadow: "10px 10px 20px #ccc",
+          },
+          bgcolor: "#fdefd0",
+        }}
+      >
+        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+          Delete Course
+        </Typography>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "80%",
+            maxHeight: "550px",
+            overflow: "auto",
+          }}
+        >
+          <SuccessAlert show={showSuccessAlert} message={successMessage} />
+          {courses.length !== 0 ? (
+            courses.map((course) => (
+              <Accordion
+                sx={{
+                  mt: "1rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "80%",
+                  bgcolor: "#e9e7ef",
+                }}
+                key={course.lectureName}
+                expanded={expanded === course.lectureName}
+                onChange={handleChange(course.lectureName)}
+              >
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6">{course.lectureName}</Typography>
+                </AccordionSummary>
+                <AccordionDetails
+                  style={{
+                    flex: "1",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    gap: "1rem",
                   }}
-                  variant="contained"
-                  sx={{ bgcolor: "#5a395b", "&:hover": { bgcolor: "#5a395b" } }}
                 >
-                  Delete
-                </Button>
-              </div>
-            </AccordionDetails>
-          </Accordion>
-        ))
-      ) : (
-        <Typography variant="h6">You didn't assign to any courses.</Typography>
-      )}
-      <ConfirmationDialog
-        open={confirmDialogOpen}
-        onClose={() => setConfirmDialogOpen(false)}
-        onConfirm={handleDeleteLecture}
-        title={"Confirm Delete"}
-        content={"Are you sure you want to delete this course?"}
-      />
-    </Box>
+                  <Typography variant="body2">
+                    {course.lectureDescription}
+                  </Typography>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button
+                      onClick={() => {
+                        setShowSuccessAlert(false);
+                        deleteLecture(course.lectureName);
+                      }}
+                      variant="contained"
+                      sx={{
+                        bgcolor: "#5a395b",
+                        "&:hover": { bgcolor: "#5a395b" },
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </div>
+                </AccordionDetails>
+              </Accordion>
+            ))
+          ) : (
+            <Typography variant="h6">
+              You didn't assign to any courses.
+            </Typography>
+          )}
+        </div>
+        <ConfirmationDialog
+          open={confirmDialogOpen}
+          onClose={() => setConfirmDialogOpen(false)}
+          onConfirm={handleDeleteLecture}
+          title={"Confirm Delete"}
+          content={"Are you sure you want to delete  " + selectedCourse + "?"}
+        />
+      </Box>
+    </div>
   );
 }
 

@@ -52,104 +52,125 @@ function Students() {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      maxWidth={1600}
-      alignItems="center"
-      justifyContent="center"
-      margin="auto"
-      marginTop={5}
-      padding={3}
-      spa
-      borderRadius={5}
-      boxShadow="5px 5px 10px #ccc"
-      sx={{
-        ":hover": {
-          boxShadow: "10px 10px 20px #ccc",
-        },
-        bgcolor: "#fdefd0",
+    <div
+      style={{
+        padding: "50px",
+        height: "calc(84vh - 10px)",
+        backgroundColor: "#e9e7ef",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
-      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
-        Students
-      </Typography>
-      {courses.length !== 0 ? (
-        courses.map((course) => (
-          <Accordion
-            sx={{
-              mt: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              width: "80%",
-              bgcolor: "#e9e7ef",
-            }}
-            key={course.lectureName}
-            expanded={expanded === course.lectureName}
-            onChange={handleChange(course.lectureName)}
-          >
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography variant="h6">
-                {course.lectureName} - {course.lectureLecturerName}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails
-              style={{
-                flex: "1",
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
-            >
-              <div
-                style={{
+      <Box
+        display="flex"
+        flexDirection="column"
+        maxWidth={1600}
+        alignItems="center"
+        justifyContent="center"
+        margin="auto"
+        marginTop={5}
+        padding={3}
+        spa
+        borderRadius={5}
+        boxShadow="5px 5px 10px #ccc"
+        sx={{
+          ":hover": {
+            boxShadow: "10px 10px 20px #ccc",
+          },
+          bgcolor: "#fdefd0",
+        }}
+      >
+        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+          Students
+        </Typography>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "80%",
+            maxHeight: "550px",
+            overflow: "auto",
+          }}
+        >
+          {courses.length !== 0 ? (
+            courses.map((course) => (
+              <Accordion
+                sx={{
+                  mt: "1rem",
                   display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  marginBottom: "0.5rem",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  width: "100%",
+                  bgcolor: "#e9e7ef",
                 }}
+                key={course.lectureName}
+                expanded={expanded === course.lectureName}
+                onChange={handleChange(course.lectureName)}
               >
-                <div style={{ flex: 2, marginRight: "5rem" }}>
-                  {" "}
-                  <Typography variant="body2">Student Name</Typography>
-                </div>
-                <div style={{ flex: 2, marginRight: "5rem" }}>
-                  {" "}
-                  <Typography variant="body2">School Number</Typography>
-                </div>
-                <div style={{ flex: 2 }}>
-                  <Typography variant="body2">Email</Typography>
-                </div>
-              </div>
-              {studentsData
-                .find((data) => data.lectureId === course.id)
-                ?.students.map((student) => (
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6">{course.lectureName}</Typography>
+                </AccordionSummary>
+                <AccordionDetails
+                  style={{
+                    flex: "1",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                  }}
+                >
                   <div
-                    key={student.id}
                     style={{
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
-                      marginBottom: "0.2rem",
+                      marginBottom: "0.5rem",
                     }}
                   >
-                    <div style={{ flex: 2, marginRight: "1rem" }}>
-                      {student.userName}
+                    <div style={{ flex: 2, marginRight: "5rem" }}>
+                      {" "}
+                      <Typography variant="body2">Student Name</Typography>
                     </div>
-                    <div style={{ flex: 2, marginRight: "1rem" }}>
-                      {student.userSchoolNumber}
+                    <div style={{ flex: 2, marginRight: "5rem" }}>
+                      {" "}
+                      <Typography variant="body2">School Number</Typography>
                     </div>
-                    <div style={{ flex: 2 }}>{student.userEmail}</div>
+                    <div style={{ flex: 2 }}>
+                      <Typography variant="body2">Email</Typography>
+                    </div>
                   </div>
-                ))}
-            </AccordionDetails>
-          </Accordion>
-        ))
-      ) : (
-        <Typography variant="h6">You didn't assign to any courses.</Typography>
-      )}
-    </Box>
+                  {studentsData
+                    .find((data) => data.lectureId === course.id)
+                    ?.students.map((student) => (
+                      <div
+                        key={student.id}
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                          marginBottom: "0.2rem",
+                        }}
+                      >
+                        <div style={{ flex: 2, marginRight: "1rem" }}>
+                          {student.userName}
+                        </div>
+                        <div style={{ flex: 2, marginRight: "1rem" }}>
+                          {student.userSchoolNumber}
+                        </div>
+                        <div style={{ flex: 2 }}>{student.userEmail}</div>
+                      </div>
+                    ))}
+                </AccordionDetails>
+              </Accordion>
+            ))
+          ) : (
+            <Typography variant="h6">
+              You didn't assign to any courses.
+            </Typography>
+          )}
+        </div>
+      </Box>
+    </div>
   );
 }
 

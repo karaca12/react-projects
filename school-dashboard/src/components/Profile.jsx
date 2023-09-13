@@ -167,7 +167,15 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "50px",
+        height: "calc(84vh - 10px)",
+        backgroundColor: "#e9e7ef",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <Box
         display="flex"
         flexDirection={"column"}

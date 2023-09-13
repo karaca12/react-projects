@@ -53,77 +53,87 @@ const CourseAdd = () => {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      maxWidth={1600}
-      alignItems="center"
-      justifyContent="center"
-      margin="auto"
-      marginTop={5}
-      padding={3}
-      borderRadius={5}
-      boxShadow="5px 5px 10px #ccc"
-      sx={{
-        ":hover": {
-          boxShadow: "10px 10px 20px #ccc",
-        },
-        bgcolor: "#fdefd0",
+    <div
+      style={{
+        padding: "50px",
+        height: "calc(84vh - 10px)",
+        backgroundColor: "#e9e7ef",
+        display: "flex",
+        justifyContent: "center",
       }}
     >
-      <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
-        Add Course
-      </Typography>
-      <SuccessAlert show={showSuccessAlert} message={successMessage} />
-      <TextField
-        required
-        onChange={handleChange}
-        name="LectureName"
-        value={lecture.LectureName}
-        margin="normal"
-        variant="outlined"
-        placeholder="Course Name"
-        label="Please enter the course name"
-        color="secondary"
-        focused
-      />
-      <TextField
-        required
-        onChange={handleChange}
-        name="LectureDescription"
-        value={lecture.LectureDescription}
-        margin="normal"
-        variant="outlined"
-        placeholder="Course Description"
-        multiline
-        rows={10}
-        sx={{ width: "100%" }}
-        label="Please enter the course description"
-        color="secondary"
-        focused
-      />
-      <Button
-        variant="contained"
-        onClick={() => {
-          handleSubmit();
-          setShowSuccessAlert(false);
-        }}
+      <Box
+        display="flex"
+        flexDirection="column"
+        maxWidth={1600}
+        alignItems="center"
+        justifyContent="center"
+        margin="auto"
+        marginTop={5}
+        padding={3}
+        borderRadius={5}
+        boxShadow="5px 5px 10px #ccc"
         sx={{
-          marginTop: "1rem",
-          bgcolor: "#5a395b",
-          "&:hover": { bgcolor: "#5a395b" },
+          ":hover": {
+            boxShadow: "10px 10px 20px #ccc",
+          },
+          bgcolor: "#fdefd0",
         }}
       >
-        Add Course
-      </Button>
-      <ConfirmationDialog
-        open={confirmDialogOpen}
-        onClose={() => setConfirmDialogOpen(false)}
-        onConfirm={handleConfirmSubmit}
-        title={"Confirm Submission"}
-        content={"Are you sure you want to submit this course?"}
-      />
-    </Box>
+        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+          Add Course
+        </Typography>
+        <SuccessAlert show={showSuccessAlert} message={successMessage} />
+        <TextField
+          required
+          onChange={handleChange}
+          name="LectureName"
+          value={lecture.LectureName}
+          margin="normal"
+          variant="outlined"
+          placeholder="Course Name"
+          label="Please enter the course name"
+          color="secondary"
+          focused
+        />
+        <TextField
+          required
+          onChange={handleChange}
+          name="LectureDescription"
+          value={lecture.LectureDescription}
+          margin="normal"
+          variant="outlined"
+          placeholder="Course Description"
+          multiline
+          rows={10}
+          sx={{ width: "100%" }}
+          label="Please enter the course description"
+          color="secondary"
+          focused
+        />
+        <Button
+          variant="contained"
+          onClick={() => {
+            handleSubmit();
+            setShowSuccessAlert(false);
+          }}
+          sx={{
+            marginTop: "1rem",
+            bgcolor: "#5a395b",
+            "&:hover": { bgcolor: "#5a395b" },
+          }}
+        >
+          Add Course
+        </Button>
+        <ConfirmationDialog
+          open={confirmDialogOpen}
+          onClose={() => setConfirmDialogOpen(false)}
+          onConfirm={handleConfirmSubmit}
+          title={"Confirm Submission"}
+          content={"Are you sure you want to submit this course?"}
+        />
+      </Box>
+    </div>
   );
 };
 

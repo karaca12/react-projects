@@ -104,7 +104,15 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "50px",
+        height: "calc(100vh)",
+        backgroundColor: "#e9e7ef",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <form onSubmit={handleSubmit}>
         <Box
           display="flex"
