@@ -102,13 +102,10 @@ function CourseUpdate() {
       <Box
         display="flex"
         flexDirection="column"
-        maxWidth={1600}
+        maxWidth={1200}
         alignItems="center"
-        justifyContent="center"
-        margin="auto"
-        marginTop={5}
+        justifyContent="flex-start"
         padding={3}
-        spa
         borderRadius={5}
         boxShadow="5px 5px 10px #ccc"
         sx={{
@@ -152,7 +149,7 @@ function CourseUpdate() {
                     <Typography variant="h6">{course.lectureName}</Typography>
                   </AccordionSummary>
                   <AccordionDetails
-                    style={{
+                    sx={{
                       flex: "1",
                       display: "flex",
                       flexDirection: "column",
@@ -214,7 +211,7 @@ function CourseUpdate() {
                 variant="outlined"
                 placeholder="Course Description"
                 multiline
-                rows={10}
+                rows={13}
                 sx={{ width: "100%" }}
                 label="Please enter the course description"
                 color="secondary"

@@ -178,15 +178,13 @@ const Profile = () => {
     >
       <Box
         display="flex"
-        flexDirection={"column"}
-        maxWidth={600}
-        alignItems={"center"}
-        justifyContent={"center"}
-        margin={"auto"}
-        marginTop={5}
+        flexDirection="column"
+        maxWidth={1200}
+        alignItems="center"
+        justifyContent="flex-start"
         padding={3}
         borderRadius={5}
-        boxShadow={"5px 5px 10px #ccc"}
+        boxShadow="5px 5px 10px #ccc"
         sx={{
           ":hover": {
             boxShadow: "10px 10px 20px #ccc",

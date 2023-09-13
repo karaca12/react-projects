@@ -44,7 +44,7 @@ const Home = () => {
       <Box
         display="flex"
         flexDirection="column"
-        maxWidth={1600}
+        maxWidth={1200}
         alignItems="center"
         justifyContent="flex-start"
         padding={3}

@@ -65,11 +65,9 @@ const CourseAdd = () => {
       <Box
         display="flex"
         flexDirection="column"
-        maxWidth={1600}
+        maxWidth={1200}
         alignItems="center"
-        justifyContent="center"
-        margin="auto"
-        marginTop={5}
+        justifyContent="flex-start"
         padding={3}
         borderRadius={5}
         boxShadow="5px 5px 10px #ccc"
@@ -105,7 +103,7 @@ const CourseAdd = () => {
           variant="outlined"
           placeholder="Course Description"
           multiline
-          rows={10}
+          rows={17}
           sx={{ width: "100%" }}
           label="Please enter the course description"
           color="secondary"

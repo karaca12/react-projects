@@ -18,16 +18,29 @@ const DefaultRoutes = () => {
     <Routes>
       <Route path="/auth" element={<Auth />} />
       <Route index element={<Navigate to="/auth" />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/courses" element={<Courses />} />
+      <Route path="/home" element={user ? <Home /> : <Navigate to="/auth" />} />
+      <Route
+        path="/profile"
+        element={
+          user &&
+          (user.userRole === "Student" || user.userRole === "Lecturer") ? (
+            <Profile />
+          ) : (
+            <Navigate to="/auth" />
+          )
+        }
+      />
+      <Route
+        path="/courses"
+        element={user ? <Courses /> : <Navigate to="/auth" />}
+      />
       <Route
         path="/enrollment"
         element={
           user && user.userRole === "Student" ? (
             <Enrollment />
           ) : (
-            <Navigate to="/auth" />
+            <Navigate to="/home" />
           )
         }
       />
@@ -37,7 +50,7 @@ const DefaultRoutes = () => {
           user && user.userRole === "Student" ? (
             <Drop />
           ) : (
-            <Navigate to="/auth" />
+            <Navigate to="/home" />
           )
         }
       />
@@ -47,7 +60,7 @@ const DefaultRoutes = () => {
           user && user.userRole === "Lecturer" ? (
             <CourseAdd />
           ) : (
-            <Navigate to="/auth" />
+            <Navigate to="/home" />
           )
         }
       />
@@ -57,7 +70,7 @@ const DefaultRoutes = () => {
           user && user.userRole === "Lecturer" ? (
             <CourseDelete />
           ) : (
-            <Navigate to="/auth" />
+            <Navigate to="/home" />
           )
         }
       />
@@ -68,7 +81,7 @@ const DefaultRoutes = () => {
           user && user.userRole === "Lecturer" ? (
             <Students />
           ) : (
-            <Navigate to="/auth" />
+            <Navigate to="/home" />
           )
         }
       />
@@ -78,11 +91,21 @@ const DefaultRoutes = () => {
           user && user.userRole === "Lecturer" ? (
             <CourseUpdate />
           ) : (
+            <Navigate to="/home" />
+          )
+        }
+      />
+      <Route
+        path="*"
+        element={
+          user &&
+          (user.userRole === "Student" || user.userRole === "Lecturer") ? (
+            <Navigate to="/home" />
+          ) : (
             <Navigate to="/auth" />
           )
         }
       />
-      <Route path="*" element={<Navigate to="/auth" />} />
     </Routes>
   );
 };

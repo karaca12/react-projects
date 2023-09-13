@@ -73,13 +73,10 @@ function CourseDelete() {
       <Box
         display="flex"
         flexDirection="column"
-        maxWidth={1600}
+        maxWidth={1200}
         alignItems="center"
-        justifyContent="center"
-        margin="auto"
-        marginTop={5}
+        justifyContent="flex-start"
         padding={3}
-        spa
         borderRadius={5}
         boxShadow="5px 5px 10px #ccc"
         sx={{
@@ -122,7 +119,7 @@ function CourseDelete() {
                   <Typography variant="h6">{course.lectureName}</Typography>
                 </AccordionSummary>
                 <AccordionDetails
-                  style={{
+                  sx={{
                     flex: "1",
                     display: "flex",
                     flexDirection: "column",
