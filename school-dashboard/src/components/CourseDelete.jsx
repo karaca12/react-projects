@@ -101,7 +101,11 @@ function CourseDelete() {
             overflow: "auto",
           }}
         >
-          <SuccessAlert show={showSuccessAlert} message={successMessage} />
+          <SuccessAlert
+            show={showSuccessAlert}
+            message={successMessage}
+            onClose={() => setShowSuccessAlert(false)}
+          />
           {courses.length !== 0 ? (
             courses.map((course) => (
               <Accordion

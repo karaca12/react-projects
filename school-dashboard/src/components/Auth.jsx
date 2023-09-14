@@ -9,6 +9,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
 import ErrorAlert from "./ErrorAlert";
+import dayjs from "dayjs";
 
 const Auth = () => {
   const { setUser } = useUser();
@@ -130,7 +131,7 @@ const Auth = () => {
             bgcolor: "#fdefd0",
           }}
         >
-          <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+          <Typography variant="h3" textAlign="center" sx={{ margin: 5 }}>
             {isSignup ? "Sign-Up" : "Sign-In"}
           </Typography>
           <ErrorAlert show={error.show} message={error.message} />
@@ -223,6 +224,7 @@ const Auth = () => {
                   onChange={handleDateChange}
                   sx={{ maxWidth: 225, margin: "10px" }}
                   label={"Birth Date"}
+                  defaultValue={dayjs("2000-01-1")}
                 />
               </LocalizationProvider>
               <Autocomplete

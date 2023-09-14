@@ -27,7 +27,9 @@ import {
   AutoStories,
   Tag,
   AccountBox,
+  Edit,
 } from "@mui/icons-material";
+import dayjs from "dayjs";
 const Profile = () => {
   const { user, setUser } = useUser();
   const [isView, setIsView] = useState(true);
@@ -170,8 +172,7 @@ const Profile = () => {
     } catch (error) {
       setError({
         show: true,
-        message:
-          "Password change failed! Password already in use isn't correct.",
+        message: "Password change failed! Active password isn't correct.",
       });
     }
   };
@@ -217,7 +218,11 @@ const Profile = () => {
               <AccountBox fontSize="large" />
               Profile
             </Typography>
-            <SuccessAlert show={showSuccessAlert} message={successMessage} />
+            <SuccessAlert
+              show={showSuccessAlert}
+              message={successMessage}
+              onClose={() => setShowSuccessAlert(false)}
+            />
 
             <Table>
               <TableBody>
@@ -345,6 +350,7 @@ const Profile = () => {
         ) : isEditing ? (
           <>
             <Typography variant="h4" textAlign="center" sx={{ margin: 5 }}>
+              <Edit />
               Edit Profile
             </Typography>
             <TextField
@@ -356,19 +362,7 @@ const Profile = () => {
               placeholder="Full Name"
               label="Please enter your name"
               color="secondary"
-              value={user.userName}
-              focused
-            />
-            <TextField
-              required
-              onChange={handleChange}
-              name="UserNationalIdentity"
-              margin="normal"
-              variant="outlined"
-              placeholder="National Identity Number"
-              label="Please enter your identity number"
-              color="secondary"
-              value={user.userNationalIdentity}
+              value={userData.UserName}
               focused
             />
             <TextField
@@ -381,7 +375,7 @@ const Profile = () => {
               placeholder="E-Mail"
               label="Please enter your E-Mail"
               color="secondary"
-              value={user.userEmail}
+              value={userData.UserEmail}
               focused
             />
             <TextField
@@ -394,7 +388,7 @@ const Profile = () => {
               placeholder="Phone Number"
               label="Please enter your phone number"
               color="secondary"
-              value={user.userPhone}
+              value={userData.UserPhone}
               focused
             />
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -403,6 +397,7 @@ const Profile = () => {
                 onChange={handleDateChange}
                 sx={{ marginTop: "10px", width: "225px" }}
                 label={"Birth Date"}
+                defaultValue={dayjs(userData.UserBirthdate)}
               />
             </LocalizationProvider>
             <Button
@@ -432,10 +427,15 @@ const Profile = () => {
         ) : (
           <>
             <Typography variant="h4" textAlign="center" sx={{ margin: 5 }}>
+              <Edit />
               Change Password
             </Typography>
 
-            <ErrorAlert show={error.show} message={error.message} />
+            <ErrorAlert
+              show={error.show}
+              message={error.message}
+              onClose={() => setError(false)}
+            />
             <TextField
               required
               onChange={handlePassword}
@@ -444,7 +444,7 @@ const Profile = () => {
               type="password"
               variant="outlined"
               placeholder="Current Password"
-              label="Please enter your current password"
+              label="Please enter your active password"
               color="secondary"
               focused
             />

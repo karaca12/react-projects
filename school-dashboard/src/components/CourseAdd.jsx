@@ -83,7 +83,11 @@ const CourseAdd = () => {
           <NoteAdd fontSize="large" />
           Add Course
         </Typography>
-        <SuccessAlert show={showSuccessAlert} message={successMessage} />
+        <SuccessAlert
+          show={showSuccessAlert}
+          message={successMessage}
+          onClose={() => setShowSuccessAlert(false)}
+        />
         <TextField
           required
           onChange={handleChange}

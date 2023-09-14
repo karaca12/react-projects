@@ -130,7 +130,11 @@ function CourseUpdate() {
             overflow: "auto",
           }}
         >
-          <SuccessAlert show={showSuccessAlert} message={successMessage} />
+          <SuccessAlert
+            show={showSuccessAlert}
+            message={successMessage}
+            onClose={() => setShowSuccessAlert(false)}
+          />
           {isView ? (
             courses.length !== 0 ? (
               courses.map((course) => (
