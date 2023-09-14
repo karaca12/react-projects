@@ -68,20 +68,22 @@ function Students() {
     );
     setSortedColumn(column);
   };
-
   const sortStudents = (students) => {
     if (!students) return [];
     const sortedStudents = [...students];
     sortedStudents.sort((a, b) => {
       if (sortOrder === "asc") {
-        return a[sortedColumn] > b[sortedColumn] ? 1 : -1;
+        return a[sortedColumn].localeCompare(b[sortedColumn], "tr", {
+          sensitivity: "base",
+        });
       } else {
-        return a[sortedColumn] < b[sortedColumn] ? 1 : -1;
+        return b[sortedColumn].localeCompare(a[sortedColumn], "tr", {
+          sensitivity: "base",
+        });
       }
     });
     return sortedStudents;
   };
-
   return (
     <div
       style={{
