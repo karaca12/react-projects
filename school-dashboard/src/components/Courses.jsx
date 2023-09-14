@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { AssignmentInd, Book, LibraryBooks } from "@mui/icons-material";
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -52,7 +53,8 @@ const Courses = () => {
           bgcolor: "#fdefd0",
         }}
       >
-        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+        <Typography variant="h3" textAlign="center" sx={{ margin: 5 }}>
+          <LibraryBooks fontSize="large" />
           All Courses
         </Typography>
         <div
@@ -80,13 +82,44 @@ const Courses = () => {
                 expanded={expanded === course.lectureName}
                 onChange={handleChange(course.lectureName)}
               >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h6">
-                    <strong>
-                      {course.lectureName} - Lecturer:{" "}
-                      {course.lectureLecturerName}
-                    </strong>
-                  </Typography>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly !important",
+                    width: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      width: "80%",
+                      justifyContent: "space-evenly",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "50%",
+                      }}
+                    >
+                      <Book />
+                      <Typography variant="body1">
+                        {course.lectureName}
+                      </Typography>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "50%",
+                      }}
+                    >
+                      <AssignmentInd />
+                      <Typography variant="body1">
+                        {course.lectureLecturerName}
+                      </Typography>
+                    </div>
+                  </div>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography variant="body2">

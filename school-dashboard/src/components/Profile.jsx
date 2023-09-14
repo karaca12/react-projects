@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@mui/material";
 import axios from "axios";
 import { useUser } from "./UserContext";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -8,7 +17,17 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import ConfirmationDialog from "./ConfirmationDialog";
 import SuccessAlert from "./SuccessAlert";
 import ErrorAlert from "./ErrorAlert";
-
+import {
+  Person,
+  Fingerprint,
+  Cake,
+  Email,
+  Phone,
+  PersonOutline,
+  AutoStories,
+  Tag,
+  AccountBox,
+} from "@mui/icons-material";
 const Profile = () => {
   const { user, setUser } = useUser();
   const [isView, setIsView] = useState(true);
@@ -194,36 +213,110 @@ const Profile = () => {
       >
         {isView ? (
           <>
-            <Typography sx={{ margin: 5 }} variant="h2" textAlign="center">
-              User Profile
+            <Typography sx={{ margin: 5 }} variant="h3" textAlign="center">
+              <AccountBox fontSize="large" />
+              Profile
             </Typography>
             <SuccessAlert show={showSuccessAlert} message={successMessage} />
 
-            <Typography variant="body1">
-              <strong>Name:</strong> {user.userName}
-            </Typography>
-            <Typography variant="body1">
-              <strong>National Identity:</strong> {user.userNationalIdentity}
-            </Typography>
-            <Typography variant="body1">
-              <strong>School Number:</strong> {user.userSchoolNumber}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Birth Date:</strong>{" "}
-              {new Date(user.userBirthdate).toLocaleDateString("en-GB")}
-            </Typography>
-            <Typography variant="body1">
-              <strong>E-Mail:</strong> {user.userEmail}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Phone Number:</strong> {user.userPhone}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Role:</strong> {user.userRole}
-            </Typography>
-            <Typography variant="body1">
-              <strong>Number of Courses:</strong> {courseCount}
-            </Typography>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <Person />
+                  </TableCell>
+                  <TableCell>
+                    <strong>Name:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">{user.userName}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Fingerprint />
+                  </TableCell>
+                  <TableCell>
+                    <strong>National Identity:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">
+                      {user.userNationalIdentity}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Tag />
+                  </TableCell>
+                  <TableCell>
+                    <strong>School Number:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">
+                      {user.userSchoolNumber}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Cake />
+                  </TableCell>
+                  <TableCell>
+                    <strong>Birth Date:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">
+                      {new Date(user.userBirthdate).toLocaleDateString("en-GB")}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Email />
+                  </TableCell>
+                  <TableCell>
+                    <strong>E-Mail:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">{user.userEmail}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <Phone />
+                  </TableCell>
+                  <TableCell>
+                    <strong>Phone Number:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">{user.userPhone}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <PersonOutline />
+                  </TableCell>
+                  <TableCell>
+                    <strong>Role:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">{user.userRole}</Typography>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <AutoStories />
+                  </TableCell>
+                  <TableCell>
+                    <strong>Number of Courses:</strong>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1">{courseCount}</Typography>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
             <Button
               onClick={toggleViewToEdit}
               sx={{
@@ -251,7 +344,7 @@ const Profile = () => {
           </>
         ) : isEditing ? (
           <>
-            <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+            <Typography variant="h4" textAlign="center" sx={{ margin: 5 }}>
               Edit Profile
             </Typography>
             <TextField
@@ -261,8 +354,9 @@ const Profile = () => {
               margin="normal"
               variant="outlined"
               placeholder="Full Name"
-              label="Please enter your name if you want to change it"
+              label="Please enter your name"
               color="secondary"
+              value={user.userName}
               focused
             />
             <TextField
@@ -272,8 +366,9 @@ const Profile = () => {
               margin="normal"
               variant="outlined"
               placeholder="National Identity Number"
-              label="Please enter your national identity number if you want to change it"
+              label="Please enter your identity number"
               color="secondary"
+              value={user.userNationalIdentity}
               focused
             />
             <TextField
@@ -284,8 +379,9 @@ const Profile = () => {
               type="email"
               variant="outlined"
               placeholder="E-Mail"
-              label="Please enter your E-Mail if you want to change it"
+              label="Please enter your E-Mail"
               color="secondary"
+              value={user.userEmail}
               focused
             />
             <TextField
@@ -296,8 +392,9 @@ const Profile = () => {
               type="phone"
               variant="outlined"
               placeholder="Phone Number"
-              label="Please enter your phone number if you want to change it"
+              label="Please enter your phone number"
               color="secondary"
+              value={user.userPhone}
               focused
             />
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -334,7 +431,7 @@ const Profile = () => {
           </>
         ) : (
           <>
-            <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+            <Typography variant="h4" textAlign="center" sx={{ margin: 5 }}>
               Change Password
             </Typography>
 
@@ -346,8 +443,8 @@ const Profile = () => {
               margin="normal"
               type="password"
               variant="outlined"
-              placeholder="Password Already In Use"
-              label="Please enter your already in use password"
+              placeholder="Current Password"
+              label="Please enter your current password"
               color="secondary"
               focused
             />

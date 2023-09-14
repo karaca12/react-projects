@@ -26,7 +26,7 @@ const DefaultRoutes = () => {
           (user.userRole === "Student" || user.userRole === "Lecturer") ? (
             <Profile />
           ) : (
-            <Navigate to="/auth" />
+            <Navigate to="/home" />
           )
         }
       />

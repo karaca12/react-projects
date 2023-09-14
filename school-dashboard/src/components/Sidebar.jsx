@@ -5,7 +5,7 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import HomeIcon from "@mui/icons-material/Home";
+import SchoolIcon from "@mui/icons-material/School";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
@@ -30,7 +30,7 @@ export default function Sidebar({ state, setState, toggleDrawer }) {
       <List>
         <ListItemButton onClick={() => navigate("/home")}>
           <ListItemIcon>
-            <HomeIcon />
+            <SchoolIcon />
           </ListItemIcon>
           <ListItemText>My Courses</ListItemText>
         </ListItemButton>
@@ -49,17 +49,17 @@ export default function Sidebar({ state, setState, toggleDrawer }) {
 
         {user && user.userRole === "Lecturer" ? (
           <>
+            <ListItemButton onClick={() => navigate("/students")}>
+              <ListItemIcon>
+                <GroupsIcon />
+              </ListItemIcon>
+              <ListItemText>Students</ListItemText>
+            </ListItemButton>
             <ListItemButton onClick={() => navigate("/courseadd")}>
               <ListItemIcon>
                 <NoteAddIcon />
               </ListItemIcon>
               <ListItemText>Add Course</ListItemText>
-            </ListItemButton>
-            <ListItemButton onClick={() => navigate("/coursedelete")}>
-              <ListItemIcon>
-                <DeleteIcon />
-              </ListItemIcon>
-              <ListItemText>Delete Course</ListItemText>
             </ListItemButton>
             <ListItemButton onClick={() => navigate("/courseupdate")}>
               <ListItemIcon>
@@ -67,11 +67,11 @@ export default function Sidebar({ state, setState, toggleDrawer }) {
               </ListItemIcon>
               <ListItemText>Update Course</ListItemText>
             </ListItemButton>
-            <ListItemButton onClick={() => navigate("/students")}>
+            <ListItemButton onClick={() => navigate("/coursedelete")}>
               <ListItemIcon>
-                <GroupsIcon />
+                <DeleteIcon />
               </ListItemIcon>
-              <ListItemText>Students</ListItemText>
+              <ListItemText>Delete Course</ListItemText>
             </ListItemButton>
           </>
         ) : (

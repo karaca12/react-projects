@@ -7,6 +7,7 @@ import axios from "axios";
 import ConfirmationDialog from "./ConfirmationDialog";
 import SuccessAlert from "./SuccessAlert";
 import { useUser } from "./UserContext";
+import NoteAdd from "@mui/icons-material/NoteAdd";
 
 const CourseAdd = () => {
   const { user } = useUser();
@@ -78,7 +79,8 @@ const CourseAdd = () => {
           bgcolor: "#fdefd0",
         }}
       >
-        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+        <Typography variant="h3" textAlign="center" sx={{ margin: 5 }}>
+          <NoteAdd fontSize="large" />
           Add Course
         </Typography>
         <SuccessAlert show={showSuccessAlert} message={successMessage} />

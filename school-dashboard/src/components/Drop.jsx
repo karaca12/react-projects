@@ -12,6 +12,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useUser } from "./UserContext";
 import ConfirmationDialog from "./ConfirmationDialog";
 import SuccessAlert from "./SuccessAlert";
+import { RemoveCircle, Book, AssignmentInd } from "@mui/icons-material";
 
 function Drop() {
   const [courses, setCourses] = useState([]);
@@ -86,7 +87,8 @@ function Drop() {
           bgcolor: "#fdefd0",
         }}
       >
-        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+        <Typography variant="h3" textAlign="center" sx={{ margin: 5 }}>
+          <RemoveCircle fontSize="large" />
           Drop Course
         </Typography>
 
@@ -116,12 +118,44 @@ function Drop() {
                 expanded={expanded === course.lectureName}
                 onChange={handleChange(course.lectureName)}
               >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h6">
-                    <strong>
-                      {course.lectureName} - {course.lectureLecturerName}
-                    </strong>
-                  </Typography>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly !important",
+                    width: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      width: "80%",
+                      justifyContent: "space-evenly",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "50%",
+                      }}
+                    >
+                      <Book />
+                      <Typography variant="body1">
+                        {course.lectureName}
+                      </Typography>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        width: "50%",
+                      }}
+                    >
+                      <AssignmentInd />
+                      <Typography variant="body1">
+                        {course.lectureLecturerName}
+                      </Typography>
+                    </div>
+                  </div>
                 </AccordionSummary>
                 <AccordionDetails
                   sx={{

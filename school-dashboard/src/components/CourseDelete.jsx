@@ -12,6 +12,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useUser } from "./UserContext";
 import ConfirmationDialog from "./ConfirmationDialog";
 import SuccessAlert from "./SuccessAlert";
+import { Book, Delete } from "@mui/icons-material";
 
 function CourseDelete() {
   const [courses, setCourses] = useState([]);
@@ -86,7 +87,8 @@ function CourseDelete() {
           bgcolor: "#fdefd0",
         }}
       >
-        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+        <Typography variant="h3" textAlign="center" sx={{ margin: 5 }}>
+          <Delete fontSize="large" />
           Delete Course
         </Typography>
         <div
@@ -115,10 +117,16 @@ function CourseDelete() {
                 expanded={expanded === course.lectureName}
                 onChange={handleChange(course.lectureName)}
               >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h6">
-                    <strong>{course.lectureName}</strong>
-                  </Typography>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly !important",
+                    width: "100%",
+                  }}
+                >
+                  <Book />
+                  <Typography variant="body1">{course.lectureName}</Typography>
                 </AccordionSummary>
                 <AccordionDetails
                   sx={{

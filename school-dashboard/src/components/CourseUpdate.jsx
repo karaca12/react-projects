@@ -13,6 +13,7 @@ import { useUser } from "./UserContext";
 import ConfirmationDialog from "./ConfirmationDialog";
 import SuccessAlert from "./SuccessAlert";
 import TextField from "@mui/material/TextField";
+import { EditNote, Book } from "@mui/icons-material";
 
 function CourseUpdate() {
   const [courses, setCourses] = useState([]);
@@ -115,7 +116,8 @@ function CourseUpdate() {
           bgcolor: "#fdefd0",
         }}
       >
-        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+        <Typography variant="h3" textAlign="center" sx={{ margin: 5 }}>
+          <EditNote fontSize="large" />
           {isView ? "Update Course" : "Update " + selectedCourse}
         </Typography>
         <div
@@ -145,9 +147,17 @@ function CourseUpdate() {
                   expanded={expanded === course.lectureName}
                   onChange={handleChange(course.lectureName)}
                 >
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography variant="h6">
-                      <strong>{course.lectureName}</strong>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-evenly !important",
+                      width: "100%",
+                    }}
+                  >
+                    <Book />
+                    <Typography variant="body1">
+                      {course.lectureName}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails

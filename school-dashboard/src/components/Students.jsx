@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useUser } from "./UserContext";
+import { Book, Email, Groups, Person, Tag } from "@mui/icons-material";
 
 function Students() {
   const [courses, setCourses] = useState([]);
@@ -107,7 +108,8 @@ function Students() {
           bgcolor: "#fdefd0",
         }}
       >
-        <Typography variant="h2" textAlign="center" sx={{ margin: 5 }}>
+        <Typography variant="h3" textAlign="center" sx={{ margin: 5 }}>
+          <Groups fontSize="large" />
           Students
         </Typography>
         <div
@@ -135,10 +137,16 @@ function Students() {
                 expanded={expanded === course.lectureName}
                 onChange={handleChange(course.lectureName)}
               >
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="h6">
-                    <strong>{course.lectureName}</strong>
-                  </Typography>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-evenly !important",
+                    width: "100%",
+                  }}
+                >
+                  <Book />
+                  <Typography variant="body1">{course.lectureName}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <TableContainer>
@@ -151,6 +159,7 @@ function Students() {
                               direction={sortOrder}
                               onClick={() => handleSort("userName")}
                             >
+                              <Person />
                               <Typography variant="body1">
                                 <strong>Student Name</strong>
                               </Typography>
@@ -162,15 +171,19 @@ function Students() {
                               direction={sortOrder}
                               onClick={() => handleSort("userSchoolNumber")}
                             >
+                              <Tag />
                               <Typography variant="body1">
                                 <strong>School Number</strong>
                               </Typography>
                             </TableSortLabel>
                           </TableCell>
                           <TableCell>
-                            <Typography variant="body1">
-                              <strong>Email</strong>
-                            </Typography>
+                            <div style={{ display: "flex" }}>
+                              <Email />
+                              <Typography variant="body1">
+                                <strong>E-Mail</strong>
+                              </Typography>
+                            </div>
                           </TableCell>
                         </TableRow>
                       </TableHead>
